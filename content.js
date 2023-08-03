@@ -1,10 +1,10 @@
 document.addEventListener('mouseup', function() {
     // Get the selected text
     var selectedText = window.getSelection().toString().trim();
-
     console.log('Selected text:', selectedText);
+    
+    if (selectedText){
     let message = selectedText;
-
     chrome.runtime.sendMessage("ojiljljdfccjamehladmhhkooahmlkol",{type:"selectedText",text:message},response => {
       //    // Close the options page
       // close();
@@ -13,6 +13,7 @@ document.addEventListener('mouseup', function() {
       //   callback(response);
       // }
     });
+  }
     // send(message, handleResponse, handleError);
   });
   
