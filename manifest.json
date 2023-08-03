@@ -1,0 +1,31 @@
+{
+    "manifest_version": 3,
+    "name": "Notion Clipper",
+    "host_permissions": ["<all_urls>"],
+    "version": "4.0.7",
+    "permissions": ["cookies", "tabs", "proxy", "alarms", "storage", "downloads", "webRequest", "notifications", "nativeMessaging", "clipboardRead", "clipboardWrite", "declarativeNetRequest","declarativeNetRequestFeedback" ],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "options_page": "options.html",
+    "action": {
+        "default_icon": {
+            "16": "images/icon16.png",
+            "48": "images/icon48.png",
+            "128": "images/icon128.png"
+        },
+        "default_title": "My Extension"
+    },
+    "content_scripts": [
+        {    
+            "all_frames": true,
+            "match_about_blank": true,
+            "matches": [ "http://*/*", "https://*/*" ],
+            "js": ["content.js"]
+        }
+    ],
+    "externally_connectable": {
+        "ids":["*"],
+        "matches": ["*://google.com/","http://*.google.com/*","https://*.google.com/*","https://github.com/*","https://twitter.com/*"]
+      }
+}
