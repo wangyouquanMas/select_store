@@ -45,5 +45,34 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
             });
         });
     }
+    if (request.type === "userThoughts") {
+        // Get the user's thoughts and the selected text
+        var thoughts = request.thoughts;
+        var selectedText = request.text;
+    
+        // Use OpenAI to process the user's thoughts and the selected text
+        // Replace "your-openai-api-key" with your actual OpenAI API key
+        const headers = {
+          "Authorization": "Bearer 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",
+          "Content-Type": "application/json"
+        };
+    
+        // Replace the URL and the body with the correct API endpoint and parameters for your use case
+        fetch('https://api.openai.com/v1/engines/davinci-codex/completions', {
+          method: 'POST',
+          headers: headers,
+          body: JSON.stringify({thoughts: thoughts, text: selectedText})
+        }).then(response => response.json())
+        .then(data => {
+          console.log('Response from OpenAI:', data);
+    
+          // Send the result back to the content script
+          sendResponse(data.result);
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+        });
+      }
     return true; 
 });
+
