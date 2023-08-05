@@ -7,9 +7,9 @@ document.addEventListener('mouseup', function() {
      // Remove any existing icon
      removeIcon();
     if (selectedText){
-    
+      console.log('Selected text:', selectedText);
     createIcon(event.pageX, event.pageY);
-    let message = selectedText;
+    message = selectedText;
     chrome.runtime.sendMessage("dfjincfllnakfgkmghmbodcmmhifcafa",{type:"selectedText",text:message},response => {
       //    // Close the options page
       // close();
@@ -104,7 +104,7 @@ function createWindow(selectedText) {
 
   // Create the elements inside the window
   let text = document.createElement('p');
-  text.textContent = 'Selected text: ' + selectedText;
+  text.textContent = 'Selected text: ' + message;
   let input = document.createElement('textarea');
   input.placeholder = 'Enter your thoughts here...';
   let submit = document.createElement('button');
