@@ -53,21 +53,28 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
         // Use OpenAI to process the user's thoughts and the selected text
         // Replace "your-openai-api-key" with your actual OpenAI API key
         const headers = {
-          "Authorization": "Bearer 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",
+          "Authorization": "Bearer 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",
           "Content-Type": "application/json"
         };
+
+        const payload = {
+            "model": "gpt-3.5-turbo",
+            "messages": [{"role": "user", "content": "this is thoughts:"+thoughts + ",this is selectedText:"+selectedText}],
+            "temperature": 0.7
+        }
+
     
         // Replace the URL and the body with the correct API endpoint and parameters for your use case
-        fetch('https://api.openai.com/v1/engines/davinci-codex/completions', {
+        fetch('https://api.openai.com/v1/chat/completions', {
           method: 'POST',
           headers: headers,
-          body: JSON.stringify({thoughts: thoughts, text: selectedText})
+          body: JSON.stringify(payload)
         }).then(response => response.json())
         .then(data => {
           console.log('Response from OpenAI:', data);
     
           // Send the result back to the content script
-          sendResponse(data.result);
+          sendResponse(data.choices[0].message.content);
         })
         .catch((error) => {
           console.error('Error:', error);

@@ -10,7 +10,7 @@ document.addEventListener('mouseup', function() {
     
     createIcon(event.pageX, event.pageY);
     let message = selectedText;
-    chrome.runtime.sendMessage("ojiljljdfccjamehladmhhkooahmlkol",{type:"selectedText",text:message},response => {
+    chrome.runtime.sendMessage("dfjincfllnakfgkmghmbodcmmhifcafa",{type:"selectedText",text:message},response => {
       //    // Close the options page
       // close();
       // if (!chrome.runtime.lastError || !retry) {
@@ -33,7 +33,7 @@ document.addEventListener('mouseup', function() {
   function send(msg, callback, retry = 20) {
     const timer = setTimeout(() => send(msg, callback, retry - 1), 100);
     
-   chrome.runtime.sendMessage("ojiljljdfccjamehladmhhkooahmlkol",{type:"selectedText",text:msg},response => {
+   chrome.runtime.sendMessage("dfjincfllnakfgkmghmbodcmmhifcafa",{type:"selectedText",text:msg},response => {
       //    // Close the options page
       // close();
       if (!chrome.runtime.lastError || !retry) {
@@ -159,7 +159,7 @@ document.addEventListener('click', function(event) {
     console.log('Thoughts:', thoughts);
 
      // Send the user's thoughts and the selected text to the background script
-     chrome.runtime.sendMessage("ojiljljdfccjamehladmhhkooahmlkol",{type:"userThoughts",thoughts:thoughts,text:message},response => {
+     chrome.runtime.sendMessage("dfjincfllnakfgkmghmbodcmmhifcafa",{type:"userThoughts",thoughts:thoughts,text:message},response => {
       console.log('Response:', response);
 
       // Display the result returned by OpenAI in the floating window
