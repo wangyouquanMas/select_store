@@ -1,5 +1,6 @@
 let message = '';  // Variable to store the last selected text
-
+  // Add this at top of content script 
+const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 document.addEventListener('mouseup', function() {
     // Get the selected text
     var selectedText = window.getSelection().toString().trim();
@@ -117,6 +118,36 @@ function createWindow(selectedText) {
 
   // Append the window to the body
   document.body.appendChild(window);
+
+  // Create the voice input button
+  let voiceButton = document.createElement('button');
+  voiceButton.textContent = 'Voice Input';
+
+  document.body.appendChild(voiceButton);
+  var recognition = new SpeechRecognition();
+  recognition.lang = 'en-US';
+  voiceButton.addEventListener('click', () => {
+    
+
+recognition.start();
+recognition.onresult = (event) => {
+  const transcript = event.results[0][0].transcript;
+  input.value = transcript;
+};
+});
+
+
+  // Listen for results
+ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+  if(request.type == "voiceResult"){
+    let transcript = request.result; 
+    console.log(transcript);
+    // Do something with transcript 
+  }
+});
+
+  // Append the voice input button to the window
+  window.appendChild(voiceButton);
 }
 
 // Function to remove the window

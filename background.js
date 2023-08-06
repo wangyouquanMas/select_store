@@ -53,7 +53,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
         // Use OpenAI to process the user's thoughts and the selected text
         // Replace "your-openai-api-key" with your actual OpenAI API key
         const headers = {
-          "Authorization": "Bearer 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",
+          "Authorization": "Bearer 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",
           "Content-Type": "application/json"
         };
 
@@ -80,6 +80,10 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
           console.error('Error:', error);
         });
       }
+     
+
     return true; 
-});
+}
+
+);
 

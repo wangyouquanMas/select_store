@@ -3,7 +3,7 @@
     "name": "Notion Clipper",
     "host_permissions": ["<all_urls>"],
     "version": "4.0.7",
-    "permissions": ["cookies", "tabs", "proxy", "alarms", "storage", "downloads", "webRequest", "notifications", "nativeMessaging", "clipboardRead", "clipboardWrite", "declarativeNetRequest","declarativeNetRequestFeedback" ],
+    "permissions": ["audio-capture","speech-recognition","webkitSpeechRecognition","speechRecognition","cookies", "tabs", "proxy", "alarms", "storage", "downloads", "webRequest", "notifications", "nativeMessaging", "clipboardRead", "clipboardWrite", "declarativeNetRequest","declarativeNetRequestFeedback" ],
     "background": {
         "service_worker": "background.js"
     },
