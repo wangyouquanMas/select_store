@@ -26,6 +26,7 @@ Briefly explain how to use your project, any commands, or steps required.
 - [ ] **Support Custom Prompt**: Allow users to provide a custom prompt that will guide the OpenAI model in generating a response.
   
 - [ ] **Support Store and Review**: Implement a feature to store user inputs and OpenAI responses. Provide an interface for users to review past interactions.
+- [ ] **Match search**: like playphrase
 
 ## Contributing
 
